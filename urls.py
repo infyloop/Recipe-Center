@@ -1,19 +1,15 @@
 from django.conf.urls.defaults import *
-from recipe.views import hello
-from recipe.views import datadisp
+
+
+
 # Uncomment the next two lines to enable the admin:
 # from django.contrib import admin
 # admin.autodiscover()
 
 urlpatterns = patterns('',
-    # Example:
-    # (r'^recipe/', include('recipe.foo.urls')),
-
-    # Uncomment the admin/doc line below to enable admin documentation:
-    # (r'^admin/doc/', include('django.contrib.admindocs.urls')),
-
     # Uncomment the next line to enable the admin:
     # (r'^admin/', include(admin.site.urls)),
-    ('^hello/$', hello),
-    ('^datadisp/$', datadisp),
+    #('^hello/$', hello),
+    url('^index/$', 'recipe.views.index',name='recipe_index'),
+    url('^detail/(?P<recipe_id>\d+)/$', 'recipe.views.detail',name='recipe_detail')
 )
