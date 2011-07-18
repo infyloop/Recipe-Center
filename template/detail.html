@@ -7,6 +7,8 @@
 <p> The ingredients are </p>
 {{ recipe.ingredients }}
 {% load comments %}
+<h4> Images </h4>
+<img src="{{ STATIC_URL }}{{recipe.image}}" />
 <h4> Comments: </h4>
 {% render_comment_list for recipe %}
 
