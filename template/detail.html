@@ -6,4 +6,9 @@
 <br>
 <p> The ingredients are </p>
 {{ recipe.ingredients }}
-{{ recipe.image }}
+{% load comments %}
+<h4> Comments: </h4>
+{% render_comment_list for recipe %}
+
+{% render_comment_form for recipe %}
+ <!-- {{ recipe.image }}  -->
