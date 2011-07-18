@@ -72,13 +72,13 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
-    'django.contrib.messages.middleware.MessageMiddleware',
+   # 'django.contrib.messages.middleware.MessageMiddleware',
 )
 
 ROOT_URLCONF = 'recipe.urls'
 
 TEMPLATE_DIRS = (
-    '/home/agiliq/Desktop/test/recipe/template',
+    '/home/agiliq/recipehq/recipe/template',
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
@@ -89,10 +89,21 @@ INSTALLED_APPS = (
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.sites',
-    'django.contrib.messages',
-    'recipe'
-    # Uncomment the next line to enable the admin:
-    #'django.contrib.admin',
+   # 'django.contrib.messages',
+     'recipe',
+     'south',
+     'django.contrib.comments',
+    # Uncomments  the next line to enable the admin:
+    'django.contrib.admin',
+    'haystack',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
 )
+
+HAYSTACK_SITECONF = 'search_sites'
+
+HAYSTACK_SEARCH_ENGINE = 'whoosh'
+
+#HAYSTACK_SOLR_URL = 'http://127.0.0.1:8983/solr'
+
+HAYSTACK_WHOOSH_PATH = '/home/agiliq/recipehq/recipe/mysite_index'

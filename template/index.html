@@ -1,0 +1,34 @@
+{% if recipes.object_list.count %}
+    <ul>
+    {% for recipe in recipes.object_list %}
+        <li><a href="{% url recipe_detail recipe_id=recipe.slug %}">{{ recipe.name }}</a></li>{#single comment #}
+{%comment%}
+
+
+{%endcomment%}
+    {% endfor %}
+    </ul>
+{% else %}
+   
+{% endif %}
+{% block content %}
+
+{% endblock content %}
+
+<div class="pagination">
+    <span class="step-links">
+        {% if recipes.has_previous %}
+            <a href="?page={{ recipes.previous_page_number }}">previous</a>
+        {% endif %}
+
+        <span class="current">
+            Page {{ recipes.number }} of {{ recipes.paginator.num_pages }}.
+        </span>
+
+        {% if recipes.has_next %}
+            <a href="?page={{ recipes.next_page_number }}">next</a>
+        {% endif %}
+    </span>
+</div>
+
+

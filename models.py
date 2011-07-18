@@ -2,8 +2,11 @@ from django.db import models
 
 # Create your models here.
 
+class Category(models.Model):
+    name = models.CharField(max_length = 100)
 
-
+    def __unicode__(self):
+        return self.name
 
 class RecipeDump(models.Model):
     class Meta:
@@ -13,7 +16,8 @@ class RecipeDump(models.Model):
         return self.name
 
     #imported_pk = models.IntegerField()
-    category_name = models.CharField(max_length = 100)
+   # category_name = models.CharField(max_length=100)
+    category = models.ForeignKey(Category,null=True,blank=True)
     something = models.CharField(max_length = 100, null=True, blank=True)
     name =  models.CharField(max_length = 100)
     ingredients =  models.TextField()
@@ -24,6 +28,16 @@ class RecipeDump(models.Model):
     foo = models.CharField(max_length=100)
     bar = models.CharField(max_length=100)
     baz = models.CharField(max_length=100)
+    slug = models.SlugField(max_length=100)
+
+    def title(self):
+        return self.name
+   
+    def get_absolute_url(self):
+        return "/detail/%s/" % self.slug
+    
+
+
     
    
     
