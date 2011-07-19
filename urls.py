@@ -1,5 +1,6 @@
 from django.conf.urls.defaults import *
 from recipe import views
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 
 # Uncomment the next two lines to enable the admin:
@@ -12,5 +13,8 @@ urlpatterns = patterns('',
     url('^detail/(?P<recipe_id>[\w-]+)/$', 'recipe.views.detail',name='recipe_detail'),
     (r'^search/', include('haystack.urls')),                   
     (r'^admin/', include(admin.site.urls)),
+     (r'^comments/', include('django.contrib.comments.urls')),
+                       
     #('^hello/$', hello),
 ) 
+urlpatterns += staticfiles_urlpatterns()

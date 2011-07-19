@@ -2,10 +2,12 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.http import HttpResponse
 from django.shortcuts import render_to_response
 from recipe.models import RecipeDump
-from django.template import Context, loader
+from django.template import Context, loader, RequestContext
 from django.http import Http404
 
 
+def render(request, template, context):
+    return render_to_response(template,context,context_instance = RequestContext(request))
 def hello(request):
     return HttpResponse("Hello world")
 
@@ -14,7 +16,7 @@ def detail(request, recipe_id=None):
         p = RecipeDump.objects.filter(slug=recipe_id)[0]
     except IndexError:
         raise Http404
-    return render_to_response('detail.html', {'recipe': p})
+    return render(request, 'detail.html', {'recipe': p})
 
 def index(request):
     obj = RecipeDump.objects.all()
