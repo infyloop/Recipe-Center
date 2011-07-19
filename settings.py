@@ -25,7 +25,8 @@ TEMPLATE_CONTEXT_PROCESSORS = ("django.contrib.auth.context_processors.auth",
 "django.core.context_processors.i18n",
 "django.core.context_processors.media",
 "django.core.context_processors.static",
-"django.contrib.messages.context_processors.messages"
+"django.contrib.messages.context_processors.messages",
+"django.core.context_processors.request",
 )
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
@@ -86,6 +87,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware'
    # 'django.contrib.messages.middleware.MessageMiddleware',
 )
 
@@ -103,17 +105,20 @@ INSTALLED_APPS = (
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.sites',
-   # 'django.contrib.messages',
-     'recipe',
-     'south',
-     'django.contrib.comments',
-    # Uncomments  the next line to enable the admin:
+    'recipe',
+    'south',
+    'django.contrib.comments',
     'django.contrib.admin',
     'haystack',
     'django.contrib.staticfiles',
+    'djangoratings',
+   # 'reviews',
+   # 'django.contrib.flatpages',
+    # 'django.contrib.messages',
     # Uncomment the next line to enable admin documentation:
     # 'django.contrib.admindocs',
 )
+
 
 HAYSTACK_SITECONF = 'search_sites'
 

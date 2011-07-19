@@ -1,4 +1,5 @@
 from django.db import models
+from djangoratings.fields import RatingField
 
 # Create your models here.
 
@@ -29,6 +30,7 @@ class RecipeDump(models.Model):
     bar = models.CharField(max_length=100)
     baz = models.CharField(max_length=100)
     slug = models.SlugField(max_length=100)
+    rating = RatingField(range=5)
 
     def title(self):
         return self.name
